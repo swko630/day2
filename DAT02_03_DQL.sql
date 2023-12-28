@@ -44,6 +44,8 @@ INSERT INTO EMPLOYEE_T VALUES(EMPLOYEE_SEQ.NEXTVAL,'김민서',1,'사원','M','1
 INSERT INTO EMPLOYEE_T VALUES(EMPLOYEE_SEQ.NEXTVAL,'이은영',2,'부장','F','90/09/01','55000000');
 INSERT INTO EMPLOYEE_T VALUES(EMPLOYEE_SEQ.NEXTVAL,'한성일',2,'과장','M','93/04/01','5000000');
 
+
+
 /*
 
      DQL
@@ -98,11 +100,101 @@ INSERT INTO EMPLOYEE_T VALUES(EMPLOYEE_SEQ.NEXTVAL,'한성일',2,'과장','M','9
      4. 칼럼 IS NULL -널값을 가지는지 점검
      5. 칼럼 IS NOT NULL -널값이 아닌걸 조회할때
      6. 칼럼 LIKE 값 -값이 포함된 걸 찾는거
+       
      
-     
-
-
 */
+ -- 4. 부서 테이블에서 부서번호가 1인 부서 정보를 조회하시오.
+ SELECT * FROM DEPART_T
+ WHERE DEPT_NO = 1; -- 결과는 1개 이하이다. 왜? DEPT_NO가 기본키기 때문에 UNIQUE 해서
+    
+
+-- 5. 부서 테이블에서 지역이 '서울'인 부서 정보를 조회하시오.
+
+ SELECT * FROM DEPART_T
+ WHERE LOCATION = '서울'; -- LOCATION 칼럼은 UNIQUE 하지 않기 때문에 조회결과는 2개 이상이 가능하다
+ 
+-- 6. 사원 테이블에서 기본급이 3000000 이상인 사원을 조회하시오.
+SELECT *
+FROM EMPLOYEE_T
+WHERE SALARY >= 3000000;
+
+-- 7. 사원 테이블에서 기본급이 2000000~ 3000000 인 사원을 조회하시오.
+     
+     
+     
+
+--8. 사원 테이블에서 직급이 '사원','과장'인 사원을 조회하시오.
+SELECT * 
+FROM EMPLOYEE_T
+WHERE POSITON IN('사원','과장');
+/*
+ 
+     와일드 카드(WILD CARD)
+     1. 만능 문자를 의미한다.
+     2. 종류
+      1) % : 글자수에 상관 없는 만능문자
+      2) _ : 1글자를 의미하는 만능문자
+     3. 예시)
+        1) 첫 번째 글자가 A인 모든 데이터 : A%
+        2) 두 번째 글자가 A인 모든 데이터 : _A%
+        3) 마지막 글자가 A인 모든 데이터 : %A
+        4) A를 포함하는 모든 데이터 : %A%
+ */
+
+ /*
+ 
+      LIKE 연산자
+      와일드 카드를 이용해서 조회할 때 사용하는 연산자
+      
+ */
+ --  9. 사원 테이블에서 '한'씨를 조회하시오.
+ SELECT *
+ FROM EMPLOYEE_T
+ WHERE NAME LIKE '한%';
+    
+    
+-- 10. 사원 테이블에서 9월 달에 입사한 사원을 조회하시오.
+ SELECT * FROM EMPLOYEE_T
+ WHERE HIRE_DATE LIKE '__/09/__' ;
+     
+     SELECT * FROM EMPLOYEES
+     WHERE JOB_ID IN('IT','AD') ;
+     
+   
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
      
      
